@@ -34,6 +34,10 @@ npm run dev
 8. Iniciar el servidor  
 php artisan serve
 
+
+Cambios clave:
+Se añadió un botón con enlace a la ruta /tasks, desde donde el usuario puede gestionar sus tareas desde el Dashboard.
+
 ✨ Funcionalidades:  
 - Registro e inicio de sesión  
 - Listado de tareas del usuario autenticado  
