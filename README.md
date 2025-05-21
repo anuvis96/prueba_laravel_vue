@@ -34,6 +34,7 @@ npm run dev
 8. Iniciar el servidor  
 php artisan serve
 
+9. Accede luego a la aplicación en http://localhost:8000
 
 Cambios clave:
 Se añadió un botón con enlace a la ruta /tasks, desde donde el usuario puede gestionar sus tareas desde el Dashboard.
