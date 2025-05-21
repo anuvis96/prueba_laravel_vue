@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
-    // Mostrar todas las tareas del usuario autenticado
+    // Muestra la lista de tareas del usuario autenticado
     public function index()
     {
         $tasks = Task::where('user_id', Auth::id())->get();
@@ -19,7 +19,7 @@ class TaskController extends Controller
         ]);
     }
 
-    // Guardar una nueva tarea
+    // Guarda una nueva tarea creada por el usuario
     public function store(Request $request)
     {
         $request->validate([
@@ -35,14 +35,9 @@ class TaskController extends Controller
         return redirect()->route('tasks.index')->with('success', 'Tarea creada correctamente.');
     }
 
-    // Actualizar tarea (solo si es del usuario autenticado)
+    // Actualiza la tarea existente con los datos enviados
     public function update(Request $request, Task $task)
     {
-        // Validar que la tarea pertenezca al usuario
-        if ($task->user_id !== Auth::id()) {
-            abort(403, 'No autorizado');
-        }
-
         $request->validate([
             'title' => 'required|max:255',
             'description' => 'nullable',
@@ -53,18 +48,14 @@ class TaskController extends Controller
             'description' => $request->description,
         ]);
 
-        return redirect()->route('tasks.index')->with('success', 'Tarea actualizada correctamente.');
+        return redirect()->back()->with('success', 'Tarea actualizada correctamente.');
     }
 
-    // Eliminar tarea (solo si es del usuario autenticado)
+    // Elimina una tarea específica
     public function destroy(Task $task)
     {
-        if ($task->user_id !== Auth::id()) {
-            abort(403, 'No autorizado');
-        }
-
         $task->delete();
 
-        return redirect()->route('tasks.index')->with('success', 'Tarea eliminada correctamente.');
+        return redirect()->back()->with('success', 'Tarea eliminada correctamente.');
     }
 }
