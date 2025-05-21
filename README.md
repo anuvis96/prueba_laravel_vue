@@ -55,11 +55,6 @@ php artisan breeze:install vue
 npm install && npm run dev  
 php artisan migrate
 
-🤝 Contribuciones:  
-Este proyecto fue desarrollado como parte de una prueba técnica. No está abierto a contribuciones externas por el momento.
-
-📄 Licencia:  
-Este proyecto está bajo la licencia MIT.
 
 🧠 Notas finales:  
 - El CRUD está protegido por autenticación  
